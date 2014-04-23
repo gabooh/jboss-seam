@@ -763,9 +763,23 @@ public class Pages
                {
                   value = pageParameter.getStringValueFromModel(facesContext);
                }
-               if (value!=null) 
+               if (value!=null)
                {
-                  parameters.put( pageParameter.getName(), value );
+                  if (pageParameter.getIgnoreValue() == null && pageParameter.isIgnoreEmpty() == false){
+                     // no ignore parameter set
+                     parameters.put( pageParameter.getName(), value );
+                  }
+                  else if ( pageParameter.getIgnoreValue() != null && value.equals( pageParameter.getIgnoreValue()) )
+                  {
+                     continue; // specific ignore value found
+                  }
+                  else if ( pageParameter.isIgnoreEmpty() && value.isEmpty() )
+                  {
+                     continue; // empty value
+                  }
+                  else {                  
+                     parameters.put( pageParameter.getName(), value );
+                  }
                }
             }
          }
@@ -1515,6 +1529,8 @@ public class Pages
       {
          param.setValidateModel(Boolean.parseBoolean(validateModelStr));
       }
+      param.setIgnoreValue(element.attributeValue("ignoreValue"));
+      param.setIgnoreEmpty(Boolean.parseBoolean( element.attributeValue("ignoreEmpty") ) );
       
       return param;
    }

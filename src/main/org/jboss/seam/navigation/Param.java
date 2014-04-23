@@ -44,6 +44,9 @@ public final class Param
    private ValueExpression validatorValueExpression;
    private String validatorId;
    
+   private boolean ignoreEmpty;
+   private String ignoreValue;
+   
    public Param(String name)
    {
       this(name, true);
@@ -343,5 +346,25 @@ public final class Param
    {
       this.validateModel = validateModel;
    }
-   
+
+   public String getIgnoreValue()
+   {
+      return ignoreValue;
+   }
+
+   public void setIgnoreValue(String ignoreValue)
+   {
+      this.ignoreValue = ignoreValue;
+   }
+
+   public boolean isIgnoreEmpty()
+   {
+      return ignoreEmpty;
+   }
+
+   public void setIgnoreEmpty(boolean ignoreEmpty)
+   {
+      this.ignoreEmpty = ignoreEmpty;
+   }
+
 }

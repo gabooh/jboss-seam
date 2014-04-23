@@ -145,6 +145,8 @@
         <xs:attribute name="validatorId" type="xs:token" />
         <xs:attribute name="required" type="pages:tf-boolean"/>
         <xs:attribute name="validateModel" default="true" type="pages:tf-boolean"/>
+        <xs:attribute name="ignoreEmpty" type="pages:tf-boolean"/>
+        <xs:attribute name="ignoreValue" type="xs:token" />
     </xs:attributeGroup>
     
     <xs:element name="header">
