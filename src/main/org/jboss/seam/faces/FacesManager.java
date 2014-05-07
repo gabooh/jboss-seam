@@ -32,6 +32,7 @@ import org.jboss.seam.core.Manager;
 import org.jboss.seam.log.LogProvider;
 import org.jboss.seam.log.Logging;
 import org.jboss.seam.navigation.ConversationIdParameter;
+import org.jboss.seam.navigation.Page;
 import org.jboss.seam.navigation.Pages;
 import org.jboss.seam.pageflow.Pageflow;
 
@@ -179,8 +180,12 @@ public class FacesManager extends Manager
       
       if (includeConversationId)
       {
-         beforeRedirect(viewId);
-         url = encodeConversationId(url, viewId);
+         Page page = Pages.instance().getPage(viewId);
+         if(page == null || page.isNoCID()==false)
+         {
+            beforeRedirect(viewId);
+            url = encodeConversationId(url, viewId);
+         }
       }
       redirect(viewId, context, url);
    }

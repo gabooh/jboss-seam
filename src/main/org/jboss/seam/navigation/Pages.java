@@ -1175,6 +1175,12 @@ public class Pages
       for (Element header: headers) {
          page.getHeaders().add(parseHeader(header));
       }
+      
+      Element noCID = element.element("nocid");
+      if (noCID != null)
+      {
+         page.setNoCID(true);
+      }
    }
    
    public ConversationIdParameter getConversationIdParameter(String conversationName)

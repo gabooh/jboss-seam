@@ -49,6 +49,7 @@ public final class Page
    private List<String> eventTypes = new ArrayList<String>();
    private List<Pattern> rewritePatterns = new ArrayList<Pattern>();
    private List<Header> httpHeaders = new ArrayList<Header>();
+   private boolean noCID = false;
    
    private Integer expires;
 
@@ -442,5 +443,15 @@ public final class Page
     public void setExpires(Integer expires) {
         this.expires = expires;   
     }
+
+   public boolean isNoCID()
+   {
+      return noCID;
+   }
+
+   public void setNoCID(boolean noCID)
+   {
+      this.noCID = noCID;
+   }
 
 }

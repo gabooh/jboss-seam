@@ -463,7 +463,13 @@
             <xs:documentation>A page description for workflow switching</xs:documentation>
         </xs:annotation>
     </xs:element>
-
+	
+	<xs:element name="nocid">
+        <xs:annotation>
+            <xs:documentation>Force ignore cid on redirects</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+	
     <xs:simpleType name="url">
         <xs:restriction base="xs:anyURI">
           <xs:pattern value="http://.*|https://.*"/>
